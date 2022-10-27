@@ -5,9 +5,9 @@ using System.Windows.Controls;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 
-namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.RGB
+namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight
 {
-    public abstract class AbstractComboBoxRGBKeyboardCardControl<T> : UserControl
+    public abstract class AbstractComboBoxKeyboardBacklightCardControl<T> : UserControl
     {
         private readonly CardControl _cardControl = new();
 
@@ -45,7 +45,7 @@ namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.RGB
 
         public event EventHandler? OnChanged;
 
-        public AbstractComboBoxRGBKeyboardCardControl() => InitializeComponent();
+        public AbstractComboBoxKeyboardBacklightCardControl() => InitializeComponent();
 
         private void InitializeComponent()
         {

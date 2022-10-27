@@ -10,7 +10,7 @@ using LenovoLegionToolkit.Lib.System;
 using Wpf.Ui.Common;
 using Button = Wpf.Ui.Controls.Button;
 
-namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.RGB
+namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight
 {
     public partial class RGBKeyboardBacklightControl
     {

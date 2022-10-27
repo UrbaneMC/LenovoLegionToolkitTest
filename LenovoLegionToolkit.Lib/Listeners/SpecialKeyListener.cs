@@ -37,43 +37,12 @@ namespace LenovoLegionToolkit.Lib.Listeners
 
         protected override Task OnChangedAsync(SpecialKey value) => value switch
         {
-            SpecialKey.CameraOn or SpecialKey.CameraOff => NotifyCameraState(value),
             SpecialKey.Fn_LockOn or SpecialKey.Fn_LockOff => NotifyFnLockState(value),
             SpecialKey.Fn_R or SpecialKey.Fn_R_2 => ToggleRefreshRateAsync(),
             SpecialKey.Fn_PrtSc => OpenSnippingTool(),
-            SpecialKey.SpectrumBacklightOff => NotifySpectrumBacklight(0),
-            SpecialKey.SpectrumBacklight1 => NotifySpectrumBacklight(1),
-            SpecialKey.SpectrumBacklight2 => NotifySpectrumBacklight(2),
-            SpecialKey.SpectrumBacklight3 => NotifySpectrumBacklight(3),
-            SpecialKey.SpectrumPreset1 => NotifySpectrumPreset(1),
-            SpecialKey.SpectrumPreset2 => NotifySpectrumPreset(2),
-            SpecialKey.SpectrumPreset3 => NotifySpectrumPreset(3),
-            SpecialKey.SpectrumPreset4 => NotifySpectrumPreset(4),
-            SpecialKey.SpectrumPreset5 => NotifySpectrumPreset(5),
-            SpecialKey.SpectrumPreset6 => NotifySpectrumPreset(6),
+            SpecialKey.CameraOn or SpecialKey.CameraOff => NotifyCameraState(value),
             _ => Task.CompletedTask
         };
-
-        private async Task NotifyCameraState(SpecialKey value)
-        {
-            try
-            {
-                if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
-                {
-                    if (Log.Instance.IsTraceEnabled)
-                        Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
-
-                    return;
-                }
-
-                if (value == SpecialKey.CameraOn)
-                    MessagingCenter.Publish(new Notification(NotificationType.CameraOn, NotificationDuration.Short));
-
-                if (value == SpecialKey.CameraOff)
-                    MessagingCenter.Publish(new Notification(NotificationType.CameraOff, NotificationDuration.Short));
-            }
-            catch { }
-        }
 
         private async Task NotifyFnLockState(SpecialKey value)
         {
@@ -82,7 +51,7 @@ namespace LenovoLegionToolkit.Lib.Listeners
                 if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
                 {
                     if (Log.Instance.IsTraceEnabled)
-                        Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
+                        Log.Instance.Trace($"FnKeys are enabled.");
 
                     return;
                 }
@@ -103,7 +72,7 @@ namespace LenovoLegionToolkit.Lib.Listeners
                 if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
                 {
                     if (Log.Instance.IsTraceEnabled)
-                        Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
+                        Log.Instance.Trace($"FnKeys are enabled.");
 
                     return;
                 }
@@ -148,7 +117,7 @@ namespace LenovoLegionToolkit.Lib.Listeners
                 if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
                 {
                     if (Log.Instance.IsTraceEnabled)
-                        Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
+                        Log.Instance.Trace($"FnKeys are enabled.");
 
                     return;
                 }
@@ -161,39 +130,23 @@ namespace LenovoLegionToolkit.Lib.Listeners
             catch { }
         }
 
-        private async Task NotifySpectrumBacklight(int value)
+        private async Task NotifyCameraState(SpecialKey value)
         {
             try
             {
                 if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
                 {
                     if (Log.Instance.IsTraceEnabled)
-                        Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
+                        Log.Instance.Trace($"FnKeys are enabled.");
 
                     return;
                 }
 
-                if (value == 0)
-                    MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightOff, NotificationDuration.Short));
-                else
-                    MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightOn, NotificationDuration.Short, value));
-            }
-            catch { }
-        }
+                if (value == SpecialKey.CameraOn)
+                    MessagingCenter.Publish(new Notification(NotificationType.CameraOn, NotificationDuration.Short));
 
-        private async Task NotifySpectrumPreset(int value)
-        {
-            try
-            {
-                if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
-                {
-                    if (Log.Instance.IsTraceEnabled)
-                        Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
-
-                    return;
-                }
-
-                MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightPreset, NotificationDuration.Short, value));
+                if (value == SpecialKey.CameraOff)
+                    MessagingCenter.Publish(new Notification(NotificationType.CameraOff, NotificationDuration.Short));
             }
             catch { }
         }

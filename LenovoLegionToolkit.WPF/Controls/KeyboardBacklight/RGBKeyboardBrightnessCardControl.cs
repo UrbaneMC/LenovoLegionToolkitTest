@@ -2,9 +2,9 @@
 using LenovoLegionToolkit.WPF.Resources;
 using Wpf.Ui.Common;
 
-namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.RGB
+namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight
 {
-    public class RGBKeyboardBrightnessCardControl : AbstractComboBoxRGBKeyboardCardControl<RGBKeyboardBrightness>
+    public class RGBKeyboardBrightnessCardControl : AbstractComboBoxKeyboardBacklightCardControl<RGBKeyboardBrightness>
     {
         public RGBKeyboardBrightnessCardControl()
         {

@@ -121,9 +121,6 @@ namespace LenovoLegionToolkit.Lib
         RefreshRate,
         RGBKeyboardPreset,
         RGBKeyboardPresetOff,
-        SpectrumBacklightOn,
-        SpectrumBacklightOff,
-        SpectrumBacklightPreset,
         TouchpadOn,
         TouchpadOff,
         WhiteKeyboardBacklight
@@ -236,17 +233,7 @@ namespace LenovoLegionToolkit.Lib
         CameraOn = 12,
         CameraOff = 13,
         Fn_R = 16,
-        Fn_R_2 = 0x0041002A,
-        SpectrumBacklightOff = 24,
-        SpectrumBacklight1 = 25,
-        SpectrumBacklight2 = 26,
-        SpectrumBacklight3 = 38,
-        SpectrumPreset1 = 32,
-        SpectrumPreset2 = 33,
-        SpectrumPreset3 = 34,
-        SpectrumPreset4 = 35,
-        SpectrumPreset5 = 36,
-        SpectrumPreset6 = 37
+        Fn_R_2 = 0x0041002A
     }
 
     public enum Theme
